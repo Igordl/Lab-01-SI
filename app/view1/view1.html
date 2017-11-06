@@ -1,0 +1,22 @@
+<form class="form linha" ng-controller="View1Ctrl">
+	<div class="coluna1E">
+	  <div class="form-group">
+	    <label for="artista">Artista</label>
+	    <input type="text" class="form-control" id="text" placeholder="Digite nome do artista" ng-model="artista.nome">
+	    <label for="imagem">Imagem do artista</label>
+    	<input type="file" id="imagem" ng-model="artista.img">
+	  </div>
+	  <button type="submit" class="btn btn-default" ng-click="adicionarArtista(artista)">Submit</button>
+	</div>
+	<div>
+		<div class="coluna2E">
+			<img src="../img/Profil_licnosti.png" alt="Imagem artista" class="img-artista">
+			
+		</div>
+		<div class="coluna2D">
+			<h2>Nome do artista:</h2>
+			<p>{{artista.nome}}</p>
+		</div>
+	</div>
+
+</form>

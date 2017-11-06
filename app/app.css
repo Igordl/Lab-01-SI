@@ -1,0 +1,102 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.linha{
+	width: 960px;
+	margin: auto;
+}
+.coluna1E{
+	width: 460px;
+	float: left;
+}
+.coluna1D{
+	width: 460px;
+	float: right;	
+}
+.coluna2E{
+	width: 210px;
+	float: left;
+}
+.coluna2D{
+	width: 210px;
+	float: right;	
+}
+.busca{
+	padding: 8px;
+	float: right;
+}
+.background-body{
+	background: #d1d1d1 !important;
+	color: #080808 !important;
+	margin-top: 80px;
+}
+
+.img-logo{
+	width: 50px;
+	float: left;
+}
+
+
+body{
+	font-family: 'Josefin Slab', serif;
+	font-size: 17px;
+}
+a:hover,a:active,a:focus{
+	background: #d1d1d1 !important;
+	color: #080808 !important;
+
+}
+a.logo{
+	font-size: 40px !important;
+	color: white !important;
+	background: transparent !important;
+}
+
+
+label{
+	padding: 10px 0 0 15px;
+}
+input{
+	border-radius: 15px !important;
+	padding: 10px 0 0 0;
+	box-shadow: #080808 1px 1px 1px !important;
+}
+input:focus, user-select{
+	border-color: black;
+}
+#imagem{
+	box-shadow: 0 0 0 0  !important;
+}
+
+button{
+	border-radius: 15px !important;
+	box-shadow: #080808 1px 1px 1px !important;
+}
+.img-artista{
+	width: 300px 300px;
+	margin: auto;
+	border-radius: 50%;
+}
