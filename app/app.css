@@ -23,26 +23,21 @@
   content: "|";
   padding-right: 0.3em;
 }
-
 .linha{
 	width: 960px;
 	margin: auto;
 }
-.coluna1E{
+.coluna1{
 	width: 460px;
+}
+.coluna2{
+	width: 210px;
+}
+.esquerda{
 	float: left;
 }
-.coluna1D{
-	width: 460px;
-	float: right;	
-}
-.coluna2E{
-	width: 210px;
-	float: left;
-}
-.coluna2D{
-	width: 210px;
-	float: right;	
+.direita{
+	float: right;
 }
 .busca{
 	padding: 8px;
@@ -96,7 +91,14 @@ button{
 	box-shadow: #080808 1px 1px 1px !important;
 }
 .img-artista{
-	width: 300px 300px;
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	border-radius: 50%;
+}
+.artista-box{
+	width: 100px;
+	height: 100px;
 	margin: auto;
 	border-radius: 50%;
 }

@@ -9,4 +9,20 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function($scope)]);
+.controller('View1Ctrl', ['$scope', function($scope) {
+
+	$scope.artistas = [];
+
+	$scope.artista = '';
+
+	$scope.addArtista = function() {
+		if($scope.artista != '') {
+			$scope.artistas.push($scope.artista);
+			console.log($scope.artistas);
+			alert("Artista adicionado com sucesso!");
+		}
+		else{
+			alert("Nome do artista invalido. :(")
+		}
+	}
+}]);
