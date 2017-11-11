@@ -1,16 +1,54 @@
-<form class="form linha">
+<div class="linha">
+	<form class="form-inline container">
+      <div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="text" placeholder="Digite a busca" ng-model="busca">
+          <button type="buscar" class="btn btn-default" ng-click="buscarArtistas()" data-toggle="modal" data-target="#product_view">Buscar</button>
+          <div class="modal fade product_view" id="product_view">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                <h3 class="modal-title">Informações do artista</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 product_img">
+                        <img src="buscarArtistas()[1]" class="img-responsive">
+                    </div>
+                    <div class="col-md-6 product_content">
+                        <h4>Artista: {{busca}} </h4>
+                        <h4>Última música: {{ultMusic}}</h4>
+                        <h4>Nota: {{nota}}</h4>
+                        
+                        <input type="nota" name="nota" placeholder="Avaliação" ng-model="nota" />                        
+                        <input type="ultMusic" name="ultMusic" placeholder="Última Musica tocada" ng-model="ultMusic" />	
+                        <button type="addFavoritos" class="btn btn-default" ng-click="addFavoritos(busca,img,ultMusic,nota)">Adiciona aos favoritos</button>
+             		 </div>
+          			</div>
+          		</div>
+     		 </div>
+  			</div>
+			</div>
+		</div>
+	</div>
+</form>
+      
+</div>
+
+<form class="form linha container">
 	<div class="coluna1 esquerda">
 	  <div class="form-group">
 	    <label for="artista">Artista</label>
 	    <input type="text" class="form-control" id="text" placeholder="Digite nome do artista" ng-model="artista">
 	    <label for="imagem">Imagem do artista</label>
-    	<input type="file" id="imagem">
+    	<input type="text" class="form-control" id="text" placeholder="Digite o link da imagem" ng-model="img">
 	  </div>
 	  <button type="submit" class="btn btn-default" ng-click="addArtista()">Submit</button>
 	</div>
 	<div>
 		<div class="coluna2 esquerda">
-			<img src="../img/Profil_licnosti.png" alt="Imagem artista" class="img-artista">
+			<img src="{{img}}" alt="Imagem artista" class="img-artista"/>
 			
 		</div>
 		<div class="coluna2 direita">
@@ -19,4 +57,23 @@
 		</div>
 	</div>
 
+
 </form>
+<div class="linha container" ng-show="temFavoritos()">
+	<h2>Lista de Favoritos</h2>
+	<div class="linha !importante">
+  	<div ng-repeat="art in favoritos" class="jumbotron col col-md-4">
+		<div>
+	  		<img src="{{art[1]}}"  class="artista-box" width="100" height="100">
+	  		<h2>Nome do artista:</h2>
+ 			<p>{{art[0]}}</p>
+ 			<h4>Última música: {{art[2]}}</h4>
+ 			<label>Nota: {{art[3]}}</label>
+
+ 			<button type="Remove" class="btn btn-default" ng-click="removeFavoritos(art[0])">Remover dos favoritos</button>
+	 	</div>
+	</div>
+</div>
+	
+</div>
+

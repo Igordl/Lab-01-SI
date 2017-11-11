@@ -1,44 +1,50 @@
-<form class="form linha coluna">
-  
- 	<div>
-  		<div ng-repeat="art in artistas" class="jumbotron col col-md-4">
-	  		<div>
-	  			<img src="{{art[5]}}"  class="artista-box" width="100" height="100">
-	  			<h2>Nome do artista:</h2>
-	  			<p>{{art[0]}}</p>
-	  			<h4>Nome do álbum:</h4>
-	  			<p>{{art[1]}}</p>
-	  			<h4>Nome da música:</h4>
-	  			<p>{{art[2]}} - {{art[3]}} - {{art[4]}}</p>
-	  			
 
-	  		</div>
 
-	  	</div>
- 	</div>
- 	<div>
-  	<div class="coluna1 esquerda">
-  		<div class="form-group">
-	  		<label for="musica">Música</label>
-		    <input type="text" class="form-control" id="text" placeholder="Digite nome da música">
-		    <label for="artista">Artista</label>
-		    <input type="text" class="form-control" id="text" placeholder="Digite nome do artista">
-		    <label for="almbum">Nome do álbum</label>
-		    <input type="text" class="form-control" id="text" placeholder="Digite nome do almbum">
+<form class="form">
+ 	<div class="container linha">
+	  	<div class="coluna1 esquerda ">
+	  		<div class="form-group">
+		  		<label for="musica">Música</label>
+			    <input type="text" class="form-control" id="text" placeholder="Digite nome da música" ng-model="musica">
+			    <label for="artista">Artista</label>
+			    <input type="text" class="form-control" id="text" placeholder="Digite nome do artista" ng-model="artista">
+			    <label for="album">Nome do álbum</label>
+			    <input type="text" class="form-control" id="text" placeholder="Digite nome do almbum" ng-model="album">
+			</div>
 		</div>
-	</div>
    	<div class="coluna1 direita">
    		<div class="form-group">
 	   		<label for="lancamento">Ano de lançamento</label>
-		    <input type="text" class="form-control" id="text" placeholder="Digite ano de lançamento da música">
+		    <input type="text" class="form-control" id="text" placeholder="Digite ano de lançamento da música"  ng-model="anoDeLancamento">
 		    <label for="duracao">Duração da música</label>
-		    <input type="text" class="form-control" id="text" placeholder="Digite duração da música">
+		    <input type="text" class="form-control" id="text" placeholder="Digite duração da música"  ng-model="duracao">
+		    <label for="img">Link da imagem do artista</label>
+		    <input type="text" class="form-control" id="text" placeholder="Digite link da imagem" ng-model="img">
 	    
 		</div>
-		<button type="submit" class="btn btn-default">Submit</button>
+		<button type="submit" class="btn btn-default" ng-click="addMusica()" ng-disabled="!informacoesCompletas()">Submit</button>
    	</div>
     
    </div>
-  </div>
-  
 </form>
+<div class="linha container">
+  	<div ng-repeat="art in artistas" class="jumbotron container col col-md-4">
+		<div>
+	  		<img src="{{art[2]}}"  class="artista-box" width="100" height="100">
+	  		<h2>Nome do artista:</h2>
+ 			<p>{{art[0]}}</p>
+	 			<div ng-repeat="albs in art[1]">
+			 		<h4>Nome do álbum:</h4>
+			  		<p>{{albs[0]}} - {{albs[1]}}</p>
+			  		<h4>Músicas:</h4>
+			  		<div ng-repeat="musis in albs[2]">
+			  			<p>{{musis[0]}} - {{musis[1]}}</p>
+		  			</div>
+	 			</div>
+	  	</div>
+	</div>
+</div>
+
+<div ng-show="temPlayList()">
+	<h2>PlayLists</h2>
+</div>
