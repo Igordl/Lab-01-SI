@@ -11,74 +11,125 @@ angular.module('myApp.view2', ['ngRoute'])
 
 .controller('View2Ctrl' , ['$scope', function($scope) {
 
-	$scope.artistas = [
-		["Maiara e Maraisa",[["Maiara e Maraisa ao vivo em Gôiania","2016",[["Medo bobo","3:16"]]]],
-		"img/MeM.jpg"
-		],
-
-		["Simone e Simaria",[["Simone e Simaria ao vivo no PP","2016",[["Regime fechado","3:49"]]]],
-		"img/SeS.jpg"],
-
-		["Marilia Mendonça",[["Marilia Mendonça ao vivo em Parque do povo","2016",[["Alô porteiro","2:35"]]]],
-		"img/MariliaM.jpg"]
-	];
-
+	$scope.playinfos = '';
+	$scope.artistas = [];
+	$scope.albuns = [];
 	$scope.playList = [];
-	
+	$scope.ultArtAdd = false ;
 
-	$scope.informacoesCompletas = function(){
-		if($scope.artista != ''&&
-			$scope.album != ''&&
-			$scope.musica != ''&&
-			$scope.anoDeLancamento != ''&&
-			$scope.duracao != ''){
+	$scope.addMusica = function(musica){
+
+		if($scope.albuns.length > 0){
+			for (var i = 0; i < $scope.albuns.length; i++) {
+				var albumLocal = $scope.albuns[i];
+				if(albumLocal.nome === musica.album){
+					for (var j = 0; j < albumLocal.musicas.length; j++) {
+					 	var musicaLocal = albumLocal.musicas[j];
+					 	console.log(musicaLocal);
+						 	if(musicaLocal[0] === musica.nome){
+						 		alert("Música já existe.");
+						 	}else{
+						 		albumLocal.musicas.push([musica.nome, musica.duracao]);
+						 		return;
+						 	}
+
+						}
+					}
+				}
+			}
+			else{
+				$scope.albuns.push($scope.criaAlbum(musica));
+			}
+			
+			//console.log($scope.artistas);
+		
+		
+	}
+
+	$scope.ultArt = function(nomeArtista){
+		for (var i = 0; i < $scope.artistas.length; i++) {
+			if($scope.artistas[i].nome === nomeArtista){
+				console.log($scope.artistas[i]);
+				$scope.ultArtAdd = $scope.artistas[i];
+			}
+		}
+	}
+
+
+
+	$scope.criaAlbum = function(musica){
+		//console.log("Criando album");
+		var albumLocalMK = new Object;
+		albumLocalMK.nome = musica.album;
+		albumLocalMK.ano = musica.ano;
+		albumLocalMK.artista = musica.artista;
+		albumLocalMK.musicas = [[musica.nome , musica.duracao]];
+		$scope.addAoArtista(albumLocalMK);
+		return albumLocalMK;
+	}
+
+	$scope.addAoArtista = function(album){
+		
+		if($scope.artistas.length > 0){
+			for (var i = 0; i < $scope.artistas.length; i++) {
+				if($scope.artistas[i].nome === album.artista){
+					$scope.artistas[i].albuns.push(album);
+					return;
+				}
+			}
+
+		}else{
+			//console.log("add ao artista");
+			var artistaLocalMK = new Object;
+			artistaLocalMK.nome = album.artista;
+			artistaLocalMK.albuns = [];
+			artistaLocalMK.albuns.push(album);
+			$scope.artistas.push(artistaLocalMK);
+			
+		}
+	
+	}
+
+	$scope.temPlayList = function(){
+		if($scope.playList.length > 0){
 			return true;
 		}
-		else{
-			return false;
-		}
+		return false;
 	}
 
+	
+	
+	$scope.criaPlaylist = function(playList){
+		  
+		if(!$scope.temPlayList){
+	      for (var i = 0; i < $scope.playList.length; i++) {
+	        if ($scope.playList[i].nome === playList.nome) {
+	          alert("PlayList já existente.");
+	          
 
-	$scope.addMusica = function(){
-		for(var i = 0; i < $scope.artistas.length; i++){
-			if($scope.artistas[i][0] == $scope.artista){
-				console.log($scope.artistas[i][0] == $scope.artista);
-				for(var j = 0; j < $scope.artistas[i][1].length; j++){
-					if($scope.artistas[i][1][j][0] == $scope.album){
-						for(var k = 0; k < $scope.artistas[i][1][j][2].length; k++){
-							if($scope.artistas[i][1][j][2][k][0] == $scope.musica){
-								alert("Música existente.")
-								return;
-							}
-							else{
-								$scope.artistas[i][1][j][2].push([$scope.musica, $scope.duracao]);
-								return;
+	        }
+	      }}
 
-							}
-					}
-					
-					
-				}else{
-						console.log($scope.artistas[i][0] == $scope.artista)
-							$scope.artistas[i][1].push([$scope.album, $scope.anoDeLancamento,
-								[[$scope.musica, $scope.duracao]]]);
-
-						return;
-					}
-			}
-		}else{
-			console.log($scope.artista)
-			$scope.artistas.push([
-				$scope.artista,[[
-				$scope.album,$scope.anoDeLancamento,[[
-				$scope.musica,$scope.duracao]]]],
-				$scope.img
-				]);
-			return;
-
-			}
-		}
+      else{
+        $scope.playList.push(playList);
+        alert("PlayList criada com sucesso!");
+      }
+		
 	}
 
+	$scope.addMusicaAPLay = function(playlist, musicaAdd){
+
+      playlist.musicas.push(musicaAdd);
+      delete $scope.musicaAdd;
+    }
+
+    $scope.mostrarPlay = function(playlist){
+    	$scope.playinfos = playlist;
+    }
+
+
+
+		
+
+		
 }]);

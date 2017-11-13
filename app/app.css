@@ -46,14 +46,39 @@
 .background-body{
 	background: #d1d1d1 !important;
 	color: #080808 !important;
-	margin-top: 80px;
+	
 }
-
+.form-group{
+	align-items: center !important;
+}
+.vw1{
+	padding-top: 60px !important;
+	background-color: #c9c9c9;
+	border-radius: 15px !important;
+	padding-bottom: 10px;
+}
+.vw2{
+	padding-top: 15px !important;
+	background-color: #c9c9c9;
+	border-radius: 15px !important;
+	padding-bottom: 10px;
+}
+.botao-addmusica{
+	margin-top: 25px;
+}
+.plList{
+	margin-top: 20px;
+}
+.mkList{
+	width: 760px;
+}
 .img-logo{
 	width: 50px;
 	float: left;
 }
-
+h4, h3, h2{
+	font-weight: bolder;
+}
 
 body{
 	font-family: 'Josefin Slab', serif;
