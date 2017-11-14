@@ -31,6 +31,7 @@ angular.module('myApp.view2', ['ngRoute'])
 						 	}else{
 						 		albumLocal.musicas.push([musica.nome, musica.duracao]);
 						 		return;
+						 		$scope.ultArt(musica.artista);
 						 	}
 
 						}
@@ -39,7 +40,9 @@ angular.module('myApp.view2', ['ngRoute'])
 			}
 			else{
 				$scope.albuns.push($scope.criaAlbum(musica));
+				$scope.ultArt(musica.artista);
 			}
+			$scope.ultArt(musica.artista);
 			
 			//console.log($scope.artistas);
 		
@@ -99,32 +102,39 @@ angular.module('myApp.view2', ['ngRoute'])
 
 	
 	
-	$scope.criaPlaylist = function(playList){
+	$scope.criaPlaylist = function(playLista){
 		  
 		if(!$scope.temPlayList){
 	      for (var i = 0; i < $scope.playList.length; i++) {
-	        if ($scope.playList[i].nome === playList.nome) {
+	        if ($scope.playList[i].nome === playLista.nome) {
 	          alert("PlayList já existente.");
-	          
-
+	          return;
 	        }
-	      }}
-
-      else{
-        $scope.playList.push(playList);
+	      }}else{
+        $scope.playList.push(playLista);
         alert("PlayList criada com sucesso!");
       }
 		
 	}
 
 	$scope.addMusicaAPLay = function(playlist, musicaAdd){
+		for (var i = 0; i < $scope.playList.length; i++) {
+	        if ($scope.playList[i].nome === playlist.nome) {
+	          
+				$scope.playList[i].musicas.push(musicaAdd);
+	        }
+	      }
 
-      playlist.musicas.push(musicaAdd);
-      delete $scope.musicaAdd;
+	    
+	    delete $scope.musicaAdd;
     }
 
     $scope.mostrarPlay = function(playlist){
-    	$scope.playinfos = playlist;
+    	var play = new Object;
+    	play.nome = playlist.nome;
+    	play.musicas = playlist.musicas;
+    	$scope.playinfos = play;
+    	console.log($scope.playinfos);
     }
 
 

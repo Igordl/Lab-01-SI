@@ -66,6 +66,12 @@
 .botao-addmusica{
 	margin-top: 25px;
 }
+.botao-play{
+	margin: 5px;
+}
+.btn-modal{
+	margin-left: 80px;
+}
 .plList{
 	margin-top: 20px;
 }

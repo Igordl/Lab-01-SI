@@ -17,8 +17,8 @@ angular.module('myApp.view1', ['ngRoute'])
 	$scope.artistaSelecionado = "";
 	$scope.mostraInfo = false;
 	$scope.mostraListBusca = false;
-	$scope.artistaMostra = {nome: 'Nome do artista', img: '../img/Profil_licnosti.png'};
-	$scope.defaultImg = '../img/Profil_licnosti.png';
+	$scope.artistaMostra = {nome: 'Nome do artista', img: ''};
+	
 	
 
 	$scope.addArtista = function(artista) {
@@ -43,15 +43,10 @@ angular.module('myApp.view1', ['ngRoute'])
 	}
 
 	$scope.artistaMostraFunc = function(artista){
-		if(artista.img === ''){
-			$scope.artistaMostra.nome = artista.nome;
-			$scope.artistaMostra.img = $scope.defaultImg;
-		}
-		else{
+
 			$scope.artistaMostra.nome = artista.nome;
 			$scope.artistaMostra.img = artista.img;
-
-		}
+		
 	}
 
 	$scope.buscarArtista = function(artistaBuscado){
@@ -62,7 +57,7 @@ angular.module('myApp.view1', ['ngRoute'])
       for (var i = 0; i < $scope.artistas.length; i++) {
         if($scope.artistas[i].nome.indexOf(artistaBuscado) !== -1){
           $scope.artistasProcurados.push($scope.artistas[i]);
-          delete $scope.busca;
+         
         }
       }
    
@@ -70,11 +65,13 @@ angular.module('myApp.view1', ['ngRoute'])
 
 	$scope.addNota = function(nota){
 		$scope.artistaSelecionado.nota = nota;
+		delete $scope.nota;
 
 	}
 
 	$scope.ultimaMusica = function(ultimaMusica){
 		$scope.artistaSelecionado.ultimaMusica = ultimaMusica;
+		delete $scope.ultMusica;
 	}
 
 	$scope.mostraArtista = function(arts){

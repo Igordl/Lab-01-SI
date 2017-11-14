@@ -76,10 +76,10 @@
 		                <h3 class="modal-title">Informações artista</h3>
            			</div>
  						<div class="row">
- 							<div class="col-lg-6">
- 								<img style="width: 250px; height: 250px" ng-src="{{artistaSelecionado.img}}">
+ 							<div class="col-lg-4">
+ 								<img class="img-artista" ng-src="{{artistaSelecionado.img}}">
  							</div>
- 							<div class="col-lg-6">
+ 							<div class="col-lg-8">
  								<h4>Nome:</h4>
  								{{artistaSelecionado.nome}}
  								<h4>Última música ouvida:</h4>
@@ -97,15 +97,15 @@
 		            	 
 		            	<div class="row">
 
-		            		<div class="col-lg-6 form-group">
-								<input style="width: 170px" type="nota" nome="nota" class="form-control" id="text" placeholder="Nota do artista" ng-model="nota">
+		            		<div class="col-lg-6 form-inline">
+								<input type="nota" nome="nota" class="form-control" id="text" placeholder="Nota do artista" ng-model="nota">
 								
-								<button type="button" class="btn btn-default" ng-click="addNota(nota)"> Atribuir nota</button>  
+								<button type="button" class="btn btn-default btn-modal" ng-click="addNota(nota)"> Atribuir nota</button>  
 							</div>
-		            		<div class="col-lg-6 form-group">
-			            		<input style="width: 170px" type="ultimaMusica" nome="ultimaMusica" class=" form-control" id="text" placeholder="Última música tocada" ng-model="ultMusica">
+		            		<div class="col-lg-6 form-inline">
+			            		<input type="ultimaMusica" nome="ultimaMusica" class=" form-control" id="text" placeholder="Última música tocada" ng-model="ultMusica">
 
-			            		<button type="button" class="btn btn-default" ng-click="ultimaMusica(ultMusica)"> Última música</button>  
+			            		<button type="button" class="btn btn-default btn-modal" style="float: right;" ng-click="ultimaMusica(ultMusica)"> Última música</button>  
 			            	</div>
 						</div>          	
 		            </div>
@@ -114,35 +114,3 @@
 	    </div>
 	</div>
 
-<!--
-<div class="modal fade product_view" id="buscados">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-                <h3 class="modal-title">Resultado da busca:</h3>
-            </div>
-            <div class="modal-body">
-
-                <div>
-                    <div>
-					    <div class="linha container" ng-show="ultArtAdd">
-						  	<div>
-								<div>	  		
-						 			<div ng-repeat="arts in artistasProcurados">
-						 				<h2>Nome do artista:</h2>
-					 					<p>{{arts.nome}}</p>
-								  		<h4>Última música:</h4>
-								  		<p>{{arts.ultimaMusica}}</p>
-								  		<h4>Nota</h4>
-								  		<p>{{arts.nota}}</p>
-						 			</div>
-	  							</div>
-							</div>
-						</div>
-             		</div>
-             	</div>
-            </div>
-        </div>
-    </div>
-</div> -->
